@@ -53,9 +53,15 @@
                             <li class="nav-item dropdown" style="display:flex">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" v-pre>
                                 <a href="{{ route('home.index') }}">
-                                <img src="{{asset('images/'.Auth::user()->image)}}" class="rounded-circle" height="20px" width="20px" style="display:inline"> </a> 
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                            @if(Auth::user()->image==null)
+                                <img src="{{asset('images/default.jpg')}}" height="20px" width="20px" class="rounded-circle">{{ Auth::user()->name }} <span class="caret"></span>
 
+                                @else
+                                <img src="{{asset('images/'.Auth::user()->image)}}" class="rounded-circle" height="20px" width="20px" style="display:inline"> </a> 
+                                                {{ Auth::user()->name }} <span class="caret"></span>
+
+                                @endif
+                                            
                                     
                                 </a>
 

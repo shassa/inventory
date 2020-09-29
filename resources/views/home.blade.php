@@ -16,7 +16,12 @@
                     <form method="POST" action="{{route('home.update',Auth::user()->id)}}" enctype="multipart/form-data">
                     @CSRF
                     {{method_field('PATCH')}}
+                    @if(Auth::user()->image==null)
+                    <img src="{{asset('images/default.jpg')}}" height="200px" width="200px" class="rounded-circle">
+                     @else
                     <img src="{{asset('images/'.Auth::user()->image)}}" height="200px" width="200px" class="rounded-circle">
+                    @endif
+
                     <input class="form-control" type="file" name="image"><br><br>
                     <button class="btn btn-primary">save</button>
                     <a class="btn btn-primary" href="{{route('first.index')}}">home page</a>
